@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.custom.il8n.resources" value="message"></constant>
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<!-- <constant name="struts.il8n.encoding" value="UTF-8"></constant> -->
+	<!-- <constant name="struts.enable.DynamicMethodInvocation" value="false"/> -->
+	<package name="ttt" extends="struts-default" namespace="/">
+	<!--  <interceptors>
+      	注册拦截器
+      	<interceptor name="loginItIcp" 
+      		class="interceptor.LoginInterceptor"></interceptor>
+      	注册拦截器栈
+      	<interceptor-stack name="myIcp">
+      	    <interceptor-ref name="defaultStack"></interceptor-ref>
+      		<interceptor-ref name="loginItIcp"></interceptor-ref>
+      	</interceptor-stack>	
+      </interceptors>
+      <default-interceptor-ref name="myIcp" /> 
+      <global-results>
+      	<result name="input">login.jsp</result>
+      </global-results> -->
+      
+      <action name="datess" class="struts.LoginAction">
+      <result name="success" >/filewelcomm.jsp</result>
+      </action>
+      
+		<!-- 登录信息  -->
+		<action name="login" class="struts.LoginAction">
+			<result name="success" type="redirectAction">Guanli</result>
+			<result name="input">login.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- 所有信息  -->
+		 <action name="Guanli" class="struts.GuanliAction">
+			<result name="success">guanli.jsp</result>
+			<result name="input">guanli.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- 所有信息  -->
+		<action name="List" class="struts.ListAction">
+			<result name="success">list.jsp</result>
+			<result name="input">guanli.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- 注册信息  -->
+		<action name="registerAction" class="struts.RegisterAction">
+			<result name="success">login.jsp</result>
+			<result name="input">regs.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- 修改信息  -->
+		<action name="Update" class="struts.UpdateAction">
+			<result name="success">guanli.jsp</result>
+			<result name="input">update.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- 发布信息  -->
+		<action name="Fabu" class="struts.FabuAction">
+			<result name="success">guanli.jsp</result>
+			<result name="input">fabu.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- 详细信息  -->
+		<action name="Details" class="struts.DetailsAction">
+			<result name="success">details.jsp</result>
+			<result name="input">guanli.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- 删除信息  -->
+		<action name="Delete" class="struts.DeleteAction">
+			<result name="success" >guanli.jsp</result>
+			<result name="input">login.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- 上传文件  -->
+		<action name="upload" class="interceptor.uploadAction">
+			<param name="savePath">/images</param>
+			<result name="success">filewelcomm.jsp</result>
+		</action>
+		<!-- 多文件上传 -->
+		<action name="uploads" class="interceptor.uploadActions">
+			<param name="savePath">/images</param>
+			<result name="success">filewelcomm.jsp</result>
+		</action>
+		<!-- 下载文件  -->
+		<action name="download" class="interceptor.FileDownAction">
+			<param name="inputPath">/images</param>
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="bufferSize">4096</param>
+			 </result>
+		</action>
+	</package>
+</struts>

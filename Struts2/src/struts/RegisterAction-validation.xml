@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE validators PUBLIC 
+  		"-//Apache Struts//XWork Validator 1.0.2//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="users.name">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="name.null"/>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">10</param>
+			<param name="minLength">6</param>
+			<message key="name.length"/>
+		</field-validator>
+	</field>
+	<field name="users.password">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="password.null"/>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="minLength">6</param>			
+			<message key="password.length"/>
+		</field-validator>
+	</field>
+	<field name="repassword">
+		<field-validator type="requiredstring">
+			<message key="repassword.null"/>
+		</field-validator>		
+		<field-validator type="fieldexpression">
+			<param name="expression">users.password==repassword</param>
+			<message key="repassword.same"/>
+		</field-validator>
+	</field>
+	<field name="users.telephone">		
+		<field-validator type="requiredstring">
+			<message key="telephone.null"/>
+		</field-validator>		
+		<field-validator type="regex">
+		<!-- 正则验证param有两种 expression/regex原因jar包不同 -->
+			<param name="expression">^(\d{3,4}-){0,1}(\d{7,8})$</param>
+			<message>电话号码格式不正确</message>
+		</field-validator>
+	</field>
+	<field name="users.username">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="username.null"/>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">20</param>
+			<param name="minLength">4</param>
+			<message>用户姓名长度必须在 ${minLength}和 ${maxLength}之间 </message>
+		</field-validator>
+	</field>		
+</validators>  		

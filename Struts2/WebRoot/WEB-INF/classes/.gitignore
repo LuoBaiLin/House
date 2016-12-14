@@ -1,0 +1,10 @@
+/convert
+/dao
+/entity
+/hibernate.cfg.xml
+/interceptor
+/message.properties
+/message_en.properties
+/struts
+/struts.xml
+/xwork-conversion.properties
