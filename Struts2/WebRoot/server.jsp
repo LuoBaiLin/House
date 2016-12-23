@@ -5,18 +5,6 @@
 <%
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* 		用户注册验证
 		String name=request.getParameter("name");
 		String email=request.getParameter("email");
